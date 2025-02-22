@@ -35,5 +35,8 @@ SELECT id, "group", value, PERCENT_RANK()
 FROM rank_table2;
 --Gives the relative ranking from 0 to 1
 
--- create a (high medium low) grouping column that depends upon the sum of values in value1 and value2.
+-- Create a (high medium low) grouping column that depends upon the sum of values in value1 and value2.
 -- Low if the sum is strictly less than 20, medium if the value is bigger tahn 20 but strictly less than 40 and otherwise high
+SELECT id, value1, value2,
+    CASE WHEN (value1 + value2) < 20 THEN 'low' WHEN value1 + value2 <40 THEN 'medium' ELSE 'high' END AS "level"
+FROM "Grouping";
